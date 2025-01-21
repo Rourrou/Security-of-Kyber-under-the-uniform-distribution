@@ -13,7 +13,8 @@ Section 4. Decryption failure attack
 Section 5. uKyber
 1. Choices of Parameters: run Kyber_para_selec.py and Kyber_para_selec_plot.py
 2. Hardness and failure prob of uKyber: run uKyber.py
+3. Performance Analysis: uKyber/uKyber/ref/test_speed.c
 
 Section 6. Discussion
-1. Application of the Majority-Voting Key Recovery Method:
-2. Application of the Multi-Value Uniform Sampling via Rejection Method:
+1. Application of the Majority-Voting Key Recovery Method: run key_recovery.py
+2. Application of the Multi-Value Uniform Sampling via Rejection Method: Dilithium/ref/optimal_sample.c
