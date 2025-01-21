@@ -7,7 +7,7 @@ STEPS_m = 1 # warning: step size > 1 may not find optimal b or m
 
 
 class MLWEParameterSet:
-    def __init__(self, n, d, m, k, q, distr="uniform"):
+    def __init__(self, n, d, m, k, q, distr="binomial"):
         self.n = n          # Ring Dimension
         self.d = d          # MLWE Dimension (over the ring)
         self.m = m          # Number of Ring-Samples
@@ -50,7 +50,7 @@ def MLWE_optimize_attack(q, n, max_m, s, cost_attack=LWE_primal_cost, cost_svp=s
     """
     best_cost = log_infinity
     best_b = None
-    b_min, b_max = 50, n+max_m
+    b_min, b_max = 10, n+max_m
     b_step = max(1, (b_max - b_min)//4)
     while b_step > 0:
         for b in range(b_min, b_max+1, b_step):
@@ -90,7 +90,10 @@ def MLWE_summarize_attacks(ps):
 
     if ps.distr=="binomial":
         k = ps.k
-        s = sqrt(ps.k /2.)
+        # s = sqrt(ps.k /2.)
+        # s = 1.225, 1.19, 1.183, 1.17, 1.145, 1.1,
+        s = 1/sqrt(1025)
+        print("the sd of binomial %d is %f" % (k, s))
     elif ps.distr=="uniform":
         k = ps.k
         s = sqrt(sum([i**2 for i in range(-k, k+1)])/(2*k+1))

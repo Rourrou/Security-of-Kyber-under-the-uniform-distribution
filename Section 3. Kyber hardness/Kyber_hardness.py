@@ -1,7 +1,6 @@
-from math import log
-from Kyber_failure import p2_cyclotomic_error_probability
 from MLWE_security import MLWE_summarize_attacks, MLWEParameterSet, MLWE_optimize_attack
 from proba_util import build_mod_switching_error_law
+
 
 class KyberParameterSet:
     def __init__(self, n, m, ks, ke,  q, rqk, rqc, rq2, ke_ct=None):
@@ -31,36 +30,34 @@ def Kyber_to_MLWE(kps):
     return MLWEParameterSet(kps.n, kps.m, kps.m + 1, kps.ks, kps.q)
 
 
-def summarize(ps):
-    print("params: ", ps.__dict__)
-    F, f = p2_cyclotomic_error_probability(ps)
-    print("failure: %.1f = 2^%.1f"%(f, log(f + 2.**(-300))/log(2)))
-
-
 if __name__ == "__main__":
     # Parameter sets
+    ps_toy1 = KyberParameterSet(128, 1, 3, 3, 3329, 2 ** 12, 2 ** 10, 2 ** 4)
     ps_light = KyberParameterSet(256, 2, 3, 3, 3329, 2 ** 12, 2 ** 10, 2 ** 4, ke_ct=2)
     ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2 ** 12, 2 ** 10, 2 ** 4)
     ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2 ** 12, 2 ** 11, 2 ** 5)
 
     # Analyses
+    # print("Kyber128 (toy1):")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_toy1))
+    # print()
+
     print("Kyber512 (light):")
     print("--------------------")
     print("security:")
     MLWE_summarize_attacks(Kyber_to_MLWE(ps_light))
-    summarize(ps_light)
     print()
-
-    print("Kyber768 (recommended):")
-    print("--------------------")
-    print("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_recommended))
-    summarize(ps_recommended)
-    print()
-
-    print("Kyber1024 (paranoid):")
-    print("--------------------")
-    print("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
-    summarize(ps_paranoid)
-    print()
+    #
+    # print("Kyber768 (recommended):")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_recommended))
+    # print()
+    #
+    # print("Kyber1024 (paranoid):")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
+    # print()
