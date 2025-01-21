@@ -7,13 +7,13 @@ STEPS_m = 1 # warning: step size > 1 may not find optimal b or m
 
 
 class MLWEParameterSet:
-    def __init__(self, n, d, m, k, q, distr="uniform"):
+    def __init__(self, n, d, m, k, q, distr="uniform_ALWE"):
         self.n = n          # Ring Dimension
         self.d = d          # MLWE Dimension (over the ring)
         self.m = m          # Number of Ring-Samples
         self.k = k          # Error Parameter
         self.q = q          # Modulus
-        self.distr = distr  # Type of distribution : binomial or uniform
+        self.distr = distr  # Type of distribution : binomial or uniform or uniform_ALWE
 
 
 def LWE_primal_cost(q, n, m, s, b, cost_svp=svp_classical, verbose=False):
@@ -94,6 +94,10 @@ def MLWE_summarize_attacks(ps):
     elif ps.distr=="uniform":
         k = ps.k
         s = sqrt(sum([i**2 for i in range(-k, k+1)])/(2*k+1))
+        print("the sd of uniform %d is %f" % (k, s))
+    elif ps.distr=="uniform_ALWE":
+        k = ps.k
+        s = sqrt(sqrt(2) * sqrt(2 / 3))  # 2 & 1
         print("the sd of uniform %d is %f" % (k, s))
     else:
         raise ValueError("Unknown distribution "+ps.distr)

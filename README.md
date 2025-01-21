@@ -10,4 +10,10 @@ Section 4. Decryption failure attack
 3. Identify the sign and position of failure: run df_position.py
 4. Recovering the secret key using decryption failures: run key_recovery.py 
     
+Section 5. uKyber
+1. Choices of Parameters: run Kyber_para_selec.py and Kyber_para_selec_plot.py
+2. Hardness and failure prob of uKyber: run uKyber.py
 
+Section 6. Discussion
+1. Application of the Majority-Voting Key Recovery Method:
+2. Application of the Multi-Value Uniform Sampling via Rejection Method:
