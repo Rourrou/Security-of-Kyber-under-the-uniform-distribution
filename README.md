@@ -8,7 +8,7 @@ Section 4. Decryption failure attack
 1. Compute the decryption failure probability of Kyber and its variant under the uniform distribution: run Kyber_failure.py
 2. Collect the failures: the decryption failures are collected as Kyber512_uniform/decryption_failures_33322_all.txt
 3. Identify the sign and position of failure: run df_position.py
-4. Recovering the secret key using decryption failures: run key_recovery.py 
+4. Recovering the secret key using decryption failures: run DFA_Kyber_uniform.py and key_recovery.py 
     
 Section 5. uKyber
 1. Choices of Parameters: run Kyber_para_selec.py and Kyber_para_selec_plot.py
@@ -16,5 +16,5 @@ Section 5. uKyber
 3. Performance Analysis: uKyber/uKyber/ref/test_speed.c
 
 Section 6. Discussion
-1. Application of the Majority-Voting Key Recovery Method: run key_recovery.py
+1. Application of the Majority-Voting Key Recovery Method: run DFA_Kyber.py, run key_recovery.py
 2. Application of the Multi-Value Uniform Sampling via Rejection Method: Dilithium/ref/optimal_sample.c
