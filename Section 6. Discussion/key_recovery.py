@@ -787,7 +787,7 @@ def next_work():
 
 if __name__ == '__main__':
     # the relation of num of ineqs and recovered coes
-    # coe_ine_DGJ19_Kyber512()
+    coe_ine_DGJ19_Kyber512()
     # coe_ine_DGJ19_Kyber768()
     # coe_ine_DGJ19_Kyber1024()
     # coe_ine_DGJ19_Kyber512_major()
@@ -797,9 +797,9 @@ if __name__ == '__main__':
     # coe_ine_DRV20_Kyber512()
     # coe_ine_DRV20_Kyber768()
     # coe_ine_DRV20_Kyber1024()
-    coe_ine_DRV20_Kyber512_major()
-    coe_ine_DRV20_Kyber768_major()
-    coe_ine_DRV20_Kyber1024_major()
+    # coe_ine_DRV20_Kyber512_major()
+    # coe_ine_DRV20_Kyber768_major()
+    # coe_ine_DRV20_Kyber1024_major()
 
     # coe_ine_DGJ19_DRV20_Kyber512()
 

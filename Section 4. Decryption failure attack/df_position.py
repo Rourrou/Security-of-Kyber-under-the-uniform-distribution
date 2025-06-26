@@ -100,7 +100,7 @@ def cor_df():
         if sign[i] == 0:
             A_pos[i] = -A_pos[i]
 
-    test_num = 1000000
+    test_num = 10000
     # test_num = 100
     ff = []
     fs = []
@@ -141,12 +141,17 @@ def cor_df():
 
     # 创建直方图并叠加概率密度曲线
     fig, ax = plt.subplots()
-    sns.kdeplot(kf, ax=ax, label='secret-failure', fill=True)
-    sns.kdeplot(ks, ax=ax, label='secret-success', fill=True)
+    # sns.kdeplot(kf, ax=ax, label='secret-failure', fill=True)
+    # sns.kdeplot(ks, ax=ax, label='secret-success', fill=True)
+    # 中文投稿
+    sns.kdeplot(kf, ax=ax, label='私钥-失败向量', fill=True)
+    sns.kdeplot(ks, ax=ax, label='私钥-成功向量', fill=True)
     ax.legend(prop={'size': 14})
     # plt.title('correlation between secret key with success/failure', fontsize=16)
-    ax.set_xlabel('correlation', fontdict={'family': 'Times New Roman', 'size': 14})
-    ax.set_ylabel('probability', fontdict={'family': 'Times New Roman', 'size': 14})
+    # ax.set_xlabel('correlation', fontdict={'family': 'Times New Roman', 'size': 14})
+    # ax.set_ylabel('probability', fontdict={'family': 'Times New Roman', 'size': 14})
+    ax.set_xlabel('相关性', fontdict={'family': 'Times New Roman', 'size': 14})
+    ax.set_ylabel('概率', fontdict={'family': 'Times New Roman', 'size': 14})
     plt.show()
 
 
@@ -272,20 +277,20 @@ def pos_dfs_ite(known_num):
 
 if __name__ == '__main__':
     # calculate the sign of epp matches the direction of df
-    sign_match()
+    # sign_match()
 
     # describe the distribution of |G[i]| of df
-    epp_dis()
+    # epp_dis()
 
     # describe the correlation of ff & fs
     cor_df()
 
     # recover the relative position of dfi with df0
-    pos_df0()
+    #pos_df0()
 
     # recover the relative position of dfi with dfs by iterative
-    for i in range(1, 5, 1):
-        pos_dfs_ite(i)
+    # for i in range(1, 5, 1):
+    #     pos_dfs_ite(i)
 
 
 
