@@ -206,20 +206,20 @@ def coe_ine_DRV20_Kyber512_major():
     plt.ylim(0, 1100)
     plt.xlim(-60, 500)
     # 绘制平滑曲线
-    plt.plot(xnew1, f1(xnew1), '-', color='orange', label='几何方法[26]')
-    plt.plot(xnew2, f2(xnew2), '-', color='g', label='多数投票')
+    plt.plot(xnew1, f1(xnew1), '-', color='black', linestyle='-', label='几何方法[26]')
+    plt.plot(xnew2, f2(xnew2), '-', color='black', linestyle='--', label='多数投票')
 
-    plt.plot([-60, 500], [1026, 1026], color='r', linestyle='--')
-    plt.plot([-60, 300], [514, 514], color='r', linestyle='--')
+    plt.plot([-60, 500], [1026, 1026], color='black', linestyle=':')
+    plt.plot([-60, 300], [514, 514], color='black', linestyle=':')
 
-    plt.plot([300, 300], [0, 1024], color='blue', linestyle='--')
-    plt.plot([120, 120], [0, 512], color='blue', linestyle='--')
+    plt.plot([300, 300], [0, 1024], color='black', linestyle=':')
+    plt.plot([120, 120], [0, 512], color='black', linestyle=':')
 
     # plt.axvline(x=3000, ymin=0, ymax=512, color='b', linestyle='--', label='x = 3000')
 
     # 在图中添加标注
-    plt.text(-50, 1026, 'y = 1024', color='red', verticalalignment='bottom')
-    plt.text(-50, 514, 'y = 512', color='red', verticalalignment='bottom')
+    plt.text(-50, 1026, 'y = 1024', color='black', verticalalignment='bottom')
+    plt.text(-50, 514, 'y = 512', color='black', verticalalignment='bottom')
 
     # 添加坐标轴标签
     plt.xlabel('Kyber512 解密失败数量')
@@ -798,8 +798,8 @@ if __name__ == '__main__':
     # coe_ine_DRV20_Kyber768()
     # coe_ine_DRV20_Kyber1024()
     coe_ine_DRV20_Kyber512_major()
-    coe_ine_DRV20_Kyber768_major()
-    coe_ine_DRV20_Kyber1024_major()
+    # coe_ine_DRV20_Kyber768_major()
+    # coe_ine_DRV20_Kyber1024_major()
 
     # coe_ine_DGJ19_DRV20_Kyber512()
 

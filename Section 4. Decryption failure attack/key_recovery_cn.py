@@ -28,20 +28,20 @@ def coe_ine_512():
     plt.ylim(0, 1100)
     plt.xlim(-500, 16000)
     # 绘制平滑曲线
-    plt.plot(xnew1, f1(xnew1), '-', color='orange', label='概率方法[25]')
-    plt.plot(xnew2, f2(xnew2), '-', color='g', label='多数投票')
+    plt.plot(xnew1, f1(xnew1), '-', color='black', linestyle='-', label='概率方法[25]')
+    plt.plot(xnew2, f2(xnew2), '-', color='black', linestyle='--', label='多数投票')
 
     # 添加y=1024的红色横线
-    plt.axhline(y=1026, color='r', linestyle='--')
-    plt.plot([-500, 6000], [514, 514], color='r', linestyle='--')
-    plt.plot([3000, 3000], [0, 512], color='blue', linestyle='--')
-    plt.plot([13000, 13000], [0, 1024], color='blue', linestyle='--')
+    plt.axhline(y=1026, color='black', linestyle=':')
+    plt.plot([-500, 6000], [514, 514], color='black', linestyle=':')
+    plt.plot([3000, 3000], [0, 512], color='black', linestyle=':')
+    plt.plot([13000, 13000], [0, 1024], color='black', linestyle=':')
 
     # plt.axvline(x=3000, ymin=0, ymax=512, color='b', linestyle='--', label='x = 3000')
 
     # 在图中添加标注
-    plt.text(1, 1026, 'y = 1024', color='red', verticalalignment='bottom', fontsize=14)
-    plt.text(1, 514, 'y = 512', color='red', verticalalignment='bottom', fontsize=14)
+    plt.text(1, 1026, 'y = 1024', color='black', verticalalignment='bottom', fontsize=14)
+    plt.text(1, 514, 'y = 512', color='black', verticalalignment='bottom', fontsize=14)
 
     # 添加坐标轴标签
     plt.xlabel('解密失败数量')

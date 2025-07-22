@@ -2,9 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns # 绘制密度曲线
 import random
+from scipy.stats import gaussian_kde
+
 plt.rcParams['font.family'] = 'SimSun'
 plt.rcParams['font.size'] = 22
-
 
 # 定义 rotation 函数
 def rotation(b, i):
@@ -100,7 +101,7 @@ def cor_df():
         if sign[i] == 0:
             A_pos[i] = -A_pos[i]
 
-    test_num = 10000
+    test_num = 1000
     # test_num = 100
     ff = []
     fs = []
@@ -143,6 +144,73 @@ def cor_df():
     plt.tight_layout(pad=0.5)
     plt.show()
 
+
+# 黑白图
+def mod_rotation(vec, r, N):
+    return np.roll(vec, r)
+
+def cor_df_bw():
+    A = np.loadtxt("Kyber512_uniform/failures/A.txt", dtype=np.int16)
+    A_pos = A.copy()
+    sign = np.loadtxt("Kyber512_uniform/failures/sign.txt", dtype=np.int16)
+    secret = np.loadtxt("Kyber512_uniform/failures/e_s.txt", dtype=np.int16)
+
+    print(A)
+    m, n = A.shape
+    print("m=", m, "n=", n)
+
+    for i in range(m):
+        if sign[i] == 0:
+            A_pos[i] = -A_pos[i]
+
+    test_num = 1000000
+    ff, fs, kf, ks = [], [], [], []
+    num = 0
+
+    for i in range(test_num):
+        rn = random.sample(range(m), 3)
+        b_1 = A_pos[rn[0]]
+        b_2 = A_pos[rn[1]]
+        b_3 = A_pos[rn[2]]
+
+        inn1 = np.dot(b_1, b_2)
+        ff.append(inn1)
+        inn11 = np.dot(b_1, secret)
+        kf.append(inn11)
+
+        r = random.randint(1, 256)
+        b_3 = mod_rotation(b_3, r, 256)
+        inn2 = np.dot(b_1, b_3)
+        fs.append(inn2)
+        inn22 = np.dot(b_3, secret)
+        ks.append(inn22)
+
+        if abs(inn1) > abs(inn2):
+            num += 1
+
+    print("the probability of fail-fail > fail-success", num / test_num)
+
+    # 用 KDE 拟合两个分布
+    kde_kf = gaussian_kde(kf)
+    kde_ks = gaussian_kde(ks)
+    x_vals = np.linspace(min(min(kf), min(ks)), max(max(kf), max(ks)), 500)
+    y_kf = kde_kf(x_vals)
+    y_ks = kde_ks(x_vals)
+
+    # 创建直方图并叠加概率密度曲线
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # 使用黑白颜色映射和不同的填充样式
+    sns.kdeplot(kf, ax=ax, label='私钥-失败向量', color='black', fill=True, alpha=0.3)  # 浅黑填充
+    sns.kdeplot(ks, ax=ax, label='私钥-成功向量', color='black', fill=True, hatch='//', alpha=0.3)  # 条纹填充
+
+    ax.legend()
+    ax.set_xlabel('相关性')
+    ax.set_ylabel('概率')
+
+    plt.tight_layout(pad=0.5)
+    plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
+    plt.show()
 
 # Identifying the position of decryption failure using method in D'Anvers et al
 def pos_df0():
@@ -272,7 +340,8 @@ if __name__ == '__main__':
     # epp_dis()
 
     # describe the correlation of ff & fs
-    cor_df()
+    # cor_df()
+    cor_df_bw()
 
     # recover the relative position of dfi with df0
     #pos_df0()

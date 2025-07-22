@@ -23,12 +23,12 @@ def Kyber512_uniform_plot():
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
     # Plot y1 with left y-axis
-    color = 'tab:blue'
+    color = 'black'
     ax1.set_xlabel('均匀分布下Kyber512变体的参数大小 u_s/u_e')
-    ax1.set_ylabel('经典核SVP困难度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
-    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='困难度', alpha=0.6, marker='+', s=100)
+    ax1.set_ylabel('经典核SVP安全强度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
+    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='安全强度', alpha=0.6, marker='+', s=100)
     ax1.axhline(y=118, color=color, linestyle='--')  # Adding the horizontal line for y1
-    ax1.text(0.2, 118, 'kyber512 困难度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
+    ax1.text(0.2, 118, 'kyber512 安全强度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
     ax1.tick_params(axis='y', labelcolor=color)
     ax1.set_ylim(-152, 152)  # Setting the y-axis limit
 
@@ -38,7 +38,7 @@ def Kyber512_uniform_plot():
 
     # Create a second y-axis and plot y2
     ax2 = ax1.twinx()  # Instantiate a second axes that shares the same x-axis
-    color = 'tab:red'
+    color = 'black'
     ax2.set_ylabel('解密失败概率 log_2()', color=color)  # We already handled the x-label with ax1
     scatter2 = ax2.scatter(x2_offset, y2, color=color, label='解密失败概率', alpha=0.6, marker='x', s=60)
     ax2.axhline(y=-139, color=color, linestyle='--')  # Adding the horizontal line for y2
@@ -135,12 +135,12 @@ def Kyber768_uniform_plot():
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
     # Plot y1 with left y-axis
-    color = 'tab:blue'
+    color = 'black'
     ax1.set_xlabel('均匀分布下Kyber768变体的参数大小 u_s/u_e')
-    ax1.set_ylabel('经典核SVP困难度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
-    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='困难度', alpha=0.6, marker='+', s=100)
+    ax1.set_ylabel('经典核SVP安全强度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
+    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='安全强度', alpha=0.6, marker='+', s=100)
     ax1.axhline(y=183, color=color, linestyle='--')  # Adding the horizontal line for y1
-    ax1.text(0.2, 183, 'kyber768 困难度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
+    ax1.text(0.2, 183, 'kyber768 安全强度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
     ax1.tick_params(axis='y', labelcolor=color)
     ax1.set_ylim(-250, 251)  # Setting the y-axis limit
 
@@ -150,7 +150,7 @@ def Kyber768_uniform_plot():
 
     # Create a second y-axis and plot y2
     ax2 = ax1.twinx()  # Instantiate a second axes that shares the same x-axis
-    color = 'tab:red'
+    color = 'black'
     ax2.set_ylabel('解密失败概率 log_2()', color=color)  # We already handled the x-label with ax1
     scatter2 = ax2.scatter(x2_offset, y2, color=color, label='解密失败概率', alpha=0.6, marker='x', s=60)
     ax2.axhline(y=-164, color=color, linestyle='--')  # Adding the horizontal line for y2
@@ -241,12 +241,12 @@ def Kyber1024_uniform_plot():
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
     # Plot y1 with left y-axis
-    color = 'tab:blue'
+    color = 'black'
     ax1.set_xlabel('均匀分布下Kyber1024变体的参数大小 u_s/u_e')
-    ax1.set_ylabel('经典核SVP困难度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
-    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='困难度', alpha=0.6, marker='+', s=100)
+    ax1.set_ylabel('经典核SVP安全强度 log_2()', color=color) # labelpad设置标题和坐标轴的距离
+    scatter1 = ax1.scatter(x1_offset, y1, color=color, label='安全强度', alpha=0.6, marker='+', s=100)
     ax1.axhline(y=256, color=color, linestyle='--')  # Adding the horizontal line for y1
-    ax1.text(0.2, 256, 'kyber1024 困难度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
+    ax1.text(0.2, 256, 'kyber1024 安全强度', color=color, verticalalignment='bottom')  # Labeling the horizontal line on the left
     ax1.tick_params(axis='y', labelcolor=color)
     ax1.set_ylim(-300, 321)  # Setting the y-axis limit
 
@@ -256,7 +256,7 @@ def Kyber1024_uniform_plot():
 
     # Create a second y-axis and plot y2
     ax2 = ax1.twinx()  # Instantiate a second axes that shares the same x-axis
-    color = 'tab:red'
+    color = 'black'
     ax2.set_ylabel('解密失败概率 log_2()', color=color)  # We already handled the x-label with ax1
     scatter2 = ax2.scatter(x2_offset, y2, color=color, label='解密失败概率', alpha=0.6, marker='x', s=60)
     ax2.axhline(y=-174, color=color, linestyle='--')  # Adding the horizontal line for y2
