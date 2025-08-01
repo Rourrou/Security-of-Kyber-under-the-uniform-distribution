@@ -93,6 +93,7 @@ def MLWE_summarize_attacks(ps):
         # s = sqrt(ps.k /2.)
         # s = 1.225, 1.19, 1.183, 1.17, 1.145, 1.1,
         s = 1/sqrt(1025)
+        # s = 0.1976
         print("the sd of binomial %d is %f" % (k, s))
     elif ps.distr=="uniform":
         k = ps.k

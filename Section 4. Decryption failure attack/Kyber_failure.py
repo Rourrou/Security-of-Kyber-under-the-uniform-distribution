@@ -71,6 +71,35 @@ def uni_encryption_error_distribution(ps):
     return D, ps.n*proba
 
 
+# 简化解密失败过程
+def uni_encryption_df_simple(ps):
+    """ construct the final error distribution in our encryption scheme
+    :param ps: parameter set (ParameterSet)
+    """
+    chis = build_uniform_law(ps.ks)           # LWE error law for the key
+    chie = build_uniform_law(ps.ke_ct)        # LWE error law for the ciphertext
+    chie_pk = build_uniform_law(ps.ke)
+
+    Rc = build_mod_switching_error_law(ps.q, ps.rqc)  # rounding error first ciphertext
+
+    chiRe = law_convolution(chie, Rc)  # LWE + rounding error ciphertext
+
+    B1 = law_product(chie_pk, chis)
+    B2 = law_product(chis, chiRe)
+
+    C1 = iter_law_convolution(B1, ps.m * ps.n)
+    C2 = iter_law_convolution(B2, ps.m * ps.n)
+
+    C = law_convolution(C1, C2)
+
+    R2 = build_mod_switching_error_law(ps.q, ps.rq2)    # Rounding2 (in the ciphertext mask part)
+    F = law_convolution(R2, chie)                       # LWE+Rounding2 error
+    D = law_convolution(C, F)                           # Final error
+
+    proba = tail_probability(D, ps.q / 4)
+    return D, ps.n*proba
+
+
 
 def failure(ps):
     print("params: ", ps.__dict__)
