@@ -37,6 +37,11 @@ if __name__ == "__main__":
     ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2 ** 12, 2 ** 10, 2 ** 4)
     ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2 ** 12, 2 ** 11, 2 ** 5)
 
+    # Saber
+    ps_LightSaber = KyberParameterSet(256, 2, 5, 5, 8192, 2 ** 12, 2 ** 10, 2 ** 4)
+    ps_Saber = KyberParameterSet(256, 3, 4, 4, 8192, 2 ** 12, 2 ** 11, 2 ** 5)
+    ps_FireSaber = KyberParameterSet(256, 4, 3, 3, 8192, 2 ** 12, 2 ** 11, 2 ** 5)
+
     # Analyses
     # print("Kyber128 (toy1):")
     # print("--------------------")
@@ -44,11 +49,11 @@ if __name__ == "__main__":
     # MLWE_summarize_attacks(Kyber_to_MLWE(ps_toy1))
     # print()
 
-    print("Kyber512 (light):")
-    print("--------------------")
-    print("security:")
-    MLWE_summarize_attacks(Kyber_to_MLWE(ps_light))
-    print()
+    # print("Kyber512 (light):")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_light))
+    # print()
     #
     # print("Kyber768 (recommended):")
     # print("--------------------")
@@ -60,4 +65,22 @@ if __name__ == "__main__":
     # print("--------------------")
     # print("security:")
     # MLWE_summarize_attacks(Kyber_to_MLWE(ps_paranoid))
+    # print()
+
+    print("LightSaber:")
+    print("--------------------")
+    print("security:")
+    MLWE_summarize_attacks(Kyber_to_MLWE(ps_LightSaber))
+    print()
+
+    # print("Saber:")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_Saber))
+    # print()
+    #
+    # print("FireSaber:")
+    # print("--------------------")
+    # print("security:")
+    # MLWE_summarize_attacks(Kyber_to_MLWE(ps_FireSaber))
     # print()

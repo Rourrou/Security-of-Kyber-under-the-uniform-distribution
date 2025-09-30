@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77cf9233-a577-4b69-a187-27fff653352f" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Section 3. Kyber hardness/Kyber_hardness.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Section 3. Kyber hardness/Kyber_hardness.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Section 3. Kyber hardness/MLWE_security.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Section 3. Kyber hardness/MLWE_security.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DFA_Kyber.py" beforeDir="false" afterPath="$PROJECT_DIR$/DFA_Kyber.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/key_recovery.py" beforeDir="false" afterPath="$PROJECT_DIR$/key_recovery.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +30,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.DFA_Kyber (1)">
     <configuration name="DFA_Kyber (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Section 6. Discussion" />

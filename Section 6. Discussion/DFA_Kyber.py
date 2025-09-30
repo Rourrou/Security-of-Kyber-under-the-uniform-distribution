@@ -112,7 +112,7 @@ def df_DRV20(m, k, solution):
     n_secret = int(len(solution)/2)
     nb_of_inequalities = 5000
 
-    with open("DATA/Kyber/failure_512.txt", 'r') as f:
+    with open("DATA/Kyber/failure_768.txt", 'r') as f:
         lines_a = [next(f) for _ in range(nb_of_inequalities)]
     a = np.loadtxt(lines_a)
 
@@ -340,7 +340,7 @@ def dfa_prob(m, solution):
 if __name__ == "__main__":
 
     solution = []
-    with open("DATA/Kyber/secret_512.txt", 'r') as g:
+    with open("DATA/Kyber/secret_768.txt", 'r') as g:
         for line in g:
             solution.append(int(line.strip()))
     solution = np.array(solution)
@@ -359,9 +359,10 @@ if __name__ == "__main__":
     num_rec_major_half = []
     suc_rat_major_half = []
 
-    for m in tqdm(range(160, 550, 50)):
+    for m in tqdm(range(2, 11, 2)):
         num_ine.append(m)
         print("The number of equalities is", m)
+        # rec, dis, angle, ratio, rec_major, angle_major, ratio_major, rec_major_half, ratio_major_half = solve_inequalities(m, 10, solution)
         rec, dis, angle, ratio, rec_major, angle_major, ratio_major, rec_major_half, ratio_major_half = df_DRV20(m, 10, solution)
         num_rec.append(rec)
         dis_rec.append(dis)

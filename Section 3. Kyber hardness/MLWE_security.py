@@ -7,7 +7,7 @@ STEPS_m = 1 # warning: step size > 1 may not find optimal b or m
 
 
 class MLWEParameterSet:
-    def __init__(self, n, d, m, k, q, distr="binomial"):
+    def __init__(self, n, d, m, k, q, distr="Saber"): # binomial
         self.n = n          # Ring Dimension
         self.d = d          # MLWE Dimension (over the ring)
         self.m = m          # Number of Ring-Samples
@@ -51,6 +51,7 @@ def MLWE_optimize_attack(q, n, max_m, s, cost_attack=LWE_primal_cost, cost_svp=s
     best_cost = log_infinity
     best_b = None
     b_min, b_max = 10, n+max_m
+    print("max_m", max_m)
     b_step = max(1, (b_max - b_min)//4)
     while b_step > 0:
         for b in range(b_min, b_max+1, b_step):
@@ -99,6 +100,15 @@ def MLWE_summarize_attacks(ps):
         k = ps.k
         s = sqrt(sum([i**2 for i in range(-k, k+1)])/(2*k+1))
         print("the sd of uniform %d is %f" % (k, s))
+    elif ps.distr=="Saber":
+        eta = 5
+        u = 4
+        s_s = eta/2
+        # s_e = sqrt(((2*u+1)**2-1)/12)
+        s_e = 2.291
+        s = sqrt(s_s*s_e)
+        # s = sqrt((eta/2)*2.291)
+        print("the sd is %f" % s)
     else:
         raise ValueError("Unknown distribution "+ps.distr)
 
